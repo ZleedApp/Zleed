@@ -3,6 +3,8 @@ import {useEffect, useRef, useState} from "react";
 
 import Hls from "hls.js";
 import Head from "next/head";
+import StreamPlayer from "../components/streamPlayer";
+import Header from "../components/header";
 
 export default function Cid() {
   const [ data, setData ] = useState(null);
@@ -18,7 +20,7 @@ export default function Cid() {
 
     setLoading(true);
 
-    fetch(`http://zleed.ga/api/v1/channel/${cid}`)
+    fetch(`https://zleed.ga/api/v1/channel/${cid}`)
       .then((res) => res.json())
       .then((data) => {
         setData(data.data);
@@ -29,16 +31,6 @@ export default function Cid() {
   if (isLoading) return <p>Loading...</p>
   if (!data) return <p>No profile data</p>
 
-  let userStreamUrl = `http://strmd.eu1.zleed.ga/${data.userData.userName}.m3u8`;
-
-  const hls = new Hls();
-
-  hls.loadSource(userStreamUrl);
-  hls.attachMedia(videoRef.current);
-
-  console.log(hls);
-  console.log(videoRef.current);
-
   return (
     <div>
       <Head>
@@ -47,9 +39,11 @@ export default function Cid() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
+      <Header />
+
       <h1>{data.userData.displayName}</h1>
 
-      <video autoPlay controls ref={videoRef} />
+      <StreamPlayer src={`https://strmd.eu1.zleed.ga/${data.userData.userName}.m3u8`} />
     </div>
   )
 }

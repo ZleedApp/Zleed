@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Head from "next/head";
+import Header from "../components/header";
 
 export default function Home() {
   return (
@@ -10,7 +11,7 @@ export default function Home() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
-      <h1>Zleed</h1>
+      <Header />
 
       <Link href="/register">
         <a>register</a>

@@ -2,3 +2,19 @@
   padding: 0;
   margin: 0;
 }
+
+video {
+  width: 70%;
+}
+
+button {
+  cursor: pointer;
+
+  background: #00B758;
+  color: #fff;
+
+  padding: 4px;
+
+  border-radius: 6px;
+  border: none;
+}
