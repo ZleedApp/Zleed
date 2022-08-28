@@ -26,7 +26,7 @@ export default function Register() {
       </form>
 
       <Link href="/register">
-        <a>Don't an account?</a>
+        <a>Don&apos;t have an account?</a>
       </Link>
 
       <Link href="/login">

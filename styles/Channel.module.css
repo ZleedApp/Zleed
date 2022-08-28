@@ -1,0 +1,15 @@
+.leftSide {
+  width: 80%;
+
+  background: fuchsia;
+}
+
+.videoItem {
+  width: 100%;
+}
+
+.rightSite {
+  width: 20%;
+
+  background: aqua;
+}

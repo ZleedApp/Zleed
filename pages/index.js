@@ -20,6 +20,10 @@ export default function Home() {
       <Link href="/login">
         <a>login</a>
       </Link>
+      |
+      <Link href="/dashboard">
+        <a>dashboard</a>
+      </Link>
 
       <h3>Test:</h3>
 

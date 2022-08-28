@@ -7,6 +7,10 @@ export default function Header() {
       <div className={styles.headerContainer}>
         <label>Zleed</label>
 
+        <form className={styles.navSearch}>
+          <input type="text" placeholder="Search" />
+        </form>
+
         <ul className={styles.navLinks}>
           <li className={styles.navItem}>
             <Link href="/register">

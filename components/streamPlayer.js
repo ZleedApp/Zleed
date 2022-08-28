@@ -1,7 +1,7 @@
 import {useEffect, useRef} from "react";
 import Hls from "hls.js";
 
-export default function StreamPlayer({ src }) {
+export default function StreamPlayer({ src, className }) {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -25,6 +25,6 @@ export default function StreamPlayer({ src }) {
   }, [ src, videoRef ])
 
   return (
-    <video autoPlay controls ref={videoRef} />
+    <video autoPlay controls ref={videoRef} className={className} />
   )
 }
