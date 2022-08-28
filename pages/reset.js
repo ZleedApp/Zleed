@@ -8,7 +8,7 @@ export default function Register() {
   return (
     <div className={styles.centerDiv}>
       <Head>
-        <title>Zleed &bull; Login</title>
+        <title>Zleed &bull; Reset Password</title>
 
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
@@ -20,13 +20,17 @@ export default function Register() {
           <h2>Zleed</h2>
         </div>
 
+        <input type="text" placeholder="Username" />
         <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <button type="submit">Sign In</button>
+        <button type="submit">Reset Password</button>
       </form>
 
       <Link href="/register">
         <a>Don't an account?</a>
+      </Link>
+
+      <Link href="/login">
+        <a>Remembered the password?</a>
       </Link>
     </div>
   )
