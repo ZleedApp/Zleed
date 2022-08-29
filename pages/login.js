@@ -1,31 +1,9 @@
+import styles from '../styles/Auth.module.scss';
+
 import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Auth.module.css';
-import logo from '../public/logo_transparent.png';
 import Link from "next/link";
-import {setCookie} from "cookies-next";
 
 export default function Login() {
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    const loginData = {
-      email: event.target.email.value,
-      password: event.target.password.value,
-    }
-
-    const response = await fetch('https://zleed.ga/api/v1/auth/login',
-      { method: 'POST', body: JSON.stringify(loginData), headers: { 'Content-Type': 'application/json' } })
-      .then((res) => res.json())
-      .then((data) => {
-        if(data.status === 1) {
-          setCookie('jwt', data.data.jwtToken);
-        } else {
-          alert(data.message);
-        }
-      });
-  }
-
   return (
     <div className={styles.centerDiv}>
       <Head>
@@ -34,21 +12,28 @@ export default function Login() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
-      <form className={styles.centerElement} onSubmit={handleSubmit}>
-        <div className={styles.centerHeader}>
-          <Image src={logo} alt="Zleed Icon" width={128} height={128} />
+      <form>
+        <div className={styles.formTop}>
+          <img
+            src="https://zleed.ga/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo_transparent.0edb399c.png&w=256&q=75"
+            width="128px" height="128px"/>
 
-          <h2>Zleed</h2>
+          <h1>Zleed</h1>
         </div>
 
-        <input required type="email" name="email" placeholder="Email" />
-        <input required type="password" name="password" placeholder="Password" />
-        <button type="submit">Sign In</button>
-      </form>
+        <div className={styles.formBottom}>
+          <input type="email" name="email" placeholder="E-Mail"/>
+          <input type="password" name="password" placeholder="Password"/>
 
-      <Link href="/register">
-        <a>Don&apos;t have an account?</a>
-      </Link>
+          <div className={styles.buttonList}>
+            <Link href="/reset">
+              <a>Forgot Password?</a>
+            </Link>
+
+            <button type="submit">Login</button>
+          </div>
+        </div>
+      </form>
     </div>
   )
 }
