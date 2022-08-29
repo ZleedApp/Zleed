@@ -30,7 +30,7 @@ export default function Forgot() {
 
           <div className={styles.buttonList}>
             <Link href="/register">
-              <a>Don't have an account?</a>
+              <a>Don&apos;t have an account?</a>
             </Link>
 
             <button type="submit">Reset Password</button>
