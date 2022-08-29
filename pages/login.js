@@ -2,6 +2,7 @@ import styles from '../styles/Auth.module.scss';
 
 import Head from 'next/head';
 import Link from "next/link";
+import SiteSeo from "../components/siteSeo";
 
 export default function Login() {
   return (
@@ -10,6 +11,8 @@ export default function Login() {
         <title>Zleed &bull; Login</title>
 
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+        <SiteSeo title="Zleed &bull; Login" description="A free and open-source streaming platform." />
       </Head>
 
       <form>

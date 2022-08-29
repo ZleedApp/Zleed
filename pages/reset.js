@@ -2,14 +2,17 @@ import styles from '../styles/Auth.module.scss';
 
 import Head from 'next/head';
 import Link from "next/link";
+import SiteSeo from "../components/siteSeo";
 
 export default function Forgot() {
   return (
     <div className={styles.centerDiv}>
       <Head>
-        <title>Zleed &bull; Login</title>
+        <title>Zleed &bull; Reset Password</title>
 
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+        <SiteSeo title="Zleed &bull; Reset Password" description="A free and open-source streaming platform." />
       </Head>
 
       <form>
