@@ -3,8 +3,44 @@ import styles from '../styles/Auth.module.scss';
 import Head from 'next/head';
 import Link from 'next/link';
 import SiteSeo from "../components/siteSeo";
+import zleedIcon from "../public/logo.png";
+import Image from "next/image";
+import ErrorMessage from "../components/errorMessage";
 
 export default function Register() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if(e.target[0].value === '') {
+      ErrorMessage(document, 'Username is required.', styles);
+
+      return;
+    } else if(e.target[1].value === '') {
+
+      ErrorMessage(document, 'Email is required.', styles);
+
+      return;
+    } else if(e.target[2].value === '') {
+      ErrorMessage(document, 'Password is required.', styles);
+
+      return;
+    } else if(e.target[3].value === '') {
+      ErrorMessage(document, 'Confirm Password is required.', styles);
+
+      return;
+    } else if(e.target[2].value !== e.target[3].value) {
+      ErrorMessage(document, 'Passwords do not match.', styles);
+
+      return;
+    }
+
+    const userPayload = {
+      username: e.target[0].value,
+      email: e.target[1].value,
+      password: e.target[2].value
+    }
+  }
+
   return (
     <div className={styles.centerDiv}>
       <Head>
@@ -15,11 +51,9 @@ export default function Register() {
         <SiteSeo title="Zleed &bull; Register" description="A free and open-source streaming platform." />
       </Head>
 
-      <form>
+      <form method="post" onSubmit={handleSubmit}>
         <div className={styles.formTop}>
-          <img
-            src="https://zleed.ga/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo_transparent.0edb399c.png&w=256&q=75"
-            width="128px" height="128px"/>
+          <Image src={zleedIcon} width={128} height={128} />
 
           <h1>Zleed</h1>
         </div>
@@ -39,6 +73,8 @@ export default function Register() {
           </div>
         </div>
       </form>
+
+      <div className={styles.errorMessage}>hi</div>
     </div>
   )
 }
