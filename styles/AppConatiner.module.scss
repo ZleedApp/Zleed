@@ -1,0 +1,59 @@
+.mainContainer {
+  width: 100vw;
+  height: 100vh;
+
+  background: #fbfbfb;
+}
+
+.headerBar {
+  width: calc(100% - (16px + 16px));
+  height: calc(52px - (8px + 8px));
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: #ffffff;
+
+  filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.25));
+
+  padding: 8px 16px;
+
+  > form {
+    > input {
+      width: 250px;
+    }
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .headerBarIcons {
+    display: flex;
+
+    align-items: center;
+
+    > svg, button {
+      cursor: pointer;
+
+      &:not(:first-child) {
+        margin-left: 6px;
+      }
+    }
+
+    > .mobileIcon {
+      @media (min-width: 768px) {
+        display: none;
+      }
+    }
+  }
+}
+
+.mainContent {
+  padding: 8px;
+
+  height: calc(100vh - 52px);
+
+  overflow: scroll;
+}
