@@ -9,7 +9,7 @@ export default function AppContainer({ children }) {
     <div className={styles.mainContainer}>
 
       <div className={styles.headerBar}>
-        <label>Zleed</label>
+        <label>Zleed<sup>ALPHA</sup></label>
 
         <form action="/search">
           <input name="q" type="text" placeholder="Search" />

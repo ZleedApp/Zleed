@@ -6,6 +6,7 @@ import SiteSeo from "../components/siteSeo";
 import zleedIcon from "../public/logo.png";
 import Image from "next/image";
 import ErrorMessage from "../components/errorMessage";
+import {setCookie} from "cookies-next";
 
 export default function Register() {
   const handleSubmit = (e) => {
@@ -39,6 +40,24 @@ export default function Register() {
       email: e.target[1].value,
       password: e.target[2].value
     }
+
+    fetch('https://zleed.ga/api/v1/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userPayload)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if(data.status === 0) {
+          ErrorMessage(document, data.message, styles);
+        } else {
+          setCookie('zleed_jwt', data.data.jwtToken, { maxAge: data.data.jwtExpires });
+
+          window.location.href = '/dashboard';
+        }
+      });
   }
 
   return (

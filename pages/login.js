@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import SiteSeo from '../components/siteSeo';
+import { setCookie } from 'cookies-next';
 
 import zleedIcon from '../public/logo.png'
 import ErrorMessage from "../components/errorMessage";
@@ -28,6 +29,24 @@ export default function Login() {
       email: e.target[0].value,
       password: e.target[1].value,
     }
+
+    fetch('https://zleed.ga/api/v1/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userPayload)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if(data.status === 0) {
+          ErrorMessage(document, data.message, styles);
+        } else {
+          setCookie('zleed_jwt', data.data.jwtToken, { maxAge: data.data.jwtExpires });
+
+          window.location.href = '/dashboard';
+        }
+      });
   }
 
   return (

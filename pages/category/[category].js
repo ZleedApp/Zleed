@@ -1,6 +1,7 @@
 import Head from "next/head";
 import {useRouter} from "next/router";
 import SiteSeo from "../../components/siteSeo";
+import AppContainer from "../../components/appContainer";
 
 export default function Channel() {
   const router = useRouter();
@@ -16,7 +17,9 @@ export default function Channel() {
         <SiteSeo title="Zleed &bull; Category: {category}" description="A free and open-source streaming platform." />
       </Head>
 
-      design in progress.
+      <AppContainer>
+        design in progress.
+      </AppContainer>
     </div>
   )
 }
